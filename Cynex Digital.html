@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cynex Digital — Built On Creativity, Driven By Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --ink: #0e1220;
+      --paper: #ffffff;
+      --card: #ffffff;
+      --muted: #5b6072;
+      --line: #e7e9f5;
+      --cyan: #22d3ee;
+      --blue: #2f5bff;
+      --violet: #7c3aed;
+      --navy: #0a0e27;
+      --navy2: #131a3a;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Sora', Inter, sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .grad-text {
+      background: linear-gradient(100deg, var(--cyan), var(--blue) 55%, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .grad-btn {
+      background: linear-gradient(100deg, var(--cyan), var(--blue) 60%, var(--violet));
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .grad-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -10px rgba(47, 91, 255, .45);
+    }
+
+    .ring-line {
+      border: 1px solid var(--line);
+    }
+
+    .card {
+      background: var(--card);
+    }
+
+    input,
+    textarea {
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(47, 91, 255, .15);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    nav a.active,
+    .footlink.active {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .grad-btn:hover {
+        transform: none;
+      }
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(100deg, var(--cyan), var(--blue) 60%, var(--violet));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .corner-accent {
+      position: absolute;
+      top: -10%;
+      left: -14%;
+      width: 60%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      clip-path: polygon(0 0, 60% 0, 0 100%);
+      opacity: .16;
+      transform: rotate(-2deg);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(60px);
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    .icon-wrap {
+      background: linear-gradient(135deg, var(--cyan), var(--blue) 60%, var(--violet));
+    }
+
+    footer a {
+      color: #c7cdf0;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="sticky top-0 z-50 backdrop-blur ring-line border-b" style="background:rgba(255,255,255,.88);">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
+      <a href="#/home" class="flex items-center gap-2 route-link" data-page="home">
+        <svg width="34" height="34" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#22d3ee" />
+              <stop offset="55%" stop-color="#2f5bff" />
+              <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <path d="M78 22 A38 38 0 1 0 78 78 L60 62 A18 18 0 1 1 60 38 Z" fill="url(#lg)" />
+        </svg>
+        <span class="font-bold text-lg" style="font-family:'Sora',sans-serif;">Cynex <span
+            class="grad-text">Digital</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium" id="navlinks">
+        <a href="#/home" class="nav-link route-link" data-page="home">Home</a>
+        <a href="#/services" class="nav-link route-link" data-page="services">Services</a>
+        <a href="#/work" class="nav-link route-link" data-page="work">Case Studies</a>
+        <a href="#/about" class="nav-link route-link" data-page="about">About</a>
+        <a href="#/blog" class="nav-link route-link" data-page="blog">Insights</a>
+        <a href="#/contact" class="nav-link route-link" data-page="contact">Contact</a>
+      </nav>
+      <a href="#/contact"
+        class="route-link grad-btn hidden md:inline-block text-white text-sm font-semibold px-5 py-2.5 rounded-full"
+        data-page="contact">Get a Quote</a>
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden flex-col gap-1 px-5 pb-4 text-sm font-medium">
+      <a href="#/home" class="block py-2 route-link" data-page="home">Home</a>
+      <a href="#/services" class="block py-2 route-link" data-page="services">Services</a>
+      <a href="#/work" class="block py-2 route-link" data-page="work">Case Studies</a>
+      <a href="#/about" class="block py-2 route-link" data-page="about">About</a>
+      <a href="#/blog" class="block py-2 route-link" data-page="blog">Insights</a>
+      <a href="#/contact" class="block py-2 route-link" data-page="contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="app" class="max-w-6xl mx-auto relative"></main>
+
+  <footer class="relative mt-10 pt-16 pb-10 px-5 text-white"
+    style="background:linear-gradient(180deg,var(--navy),var(--navy2));">
+    <svg class="absolute -top-1 left-0 w-full" viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:70px;">
+      <path d="M0,60 C300,10 500,90 780,50 C1050,15 1250,70 1440,30 L1440,0 L0,0 Z" fill="#ffffff" />
+      <path d="M0,80 C320,30 560,95 820,55 C1080,20 1260,80 1440,45 L1440,90 L0,90 Z" fill="url(#lg)" opacity="0.5" />
+    </svg>
+    <div class="max-w-6xl mx-auto grid sm:grid-cols-4 gap-8 text-sm relative">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2">
+          <svg width="30" height="30" viewBox="0 0 100 100">
+            <path d="M78 22 A38 38 0 1 0 78 78 L60 62 A18 18 0 1 1 60 38 Z" fill="url(#lg)" />
+          </svg>
+          <span class="font-bold" style="font-family:'Sora',sans-serif;">Cynex Digital</span>
+        </div>
+        <p class="mt-2 max-w-xs" style="color:#9aa2c9">Built on creativity, driven by digital. Strategy, design and
+          development under one roof.</p>
+        <div class="flex gap-3 mt-4">
+          <a href="https://www.instagram.com/cynexdigital.pk" target="_blank" rel="noopener"
+            class="rounded-full w-9 h-9 flex items-center justify-center" style="border:1px solid #2a2f55">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/cynex-digital/" target="_blank" rel="noopener"
+            class="rounded-full w-9 h-9 flex items-center justify-center" style="border:1px solid #2a2f55">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="9" width="4" height="12" />
+              <circle cx="5" cy="4" r="2" />
+              <path d="M11 9v12M11 13c0-2 2-4 4-4s4 2 4 4v8" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="font-semibold mb-2 text-white">Pages</p>
+        <a class="block py-1 route-link" data-page="home" href="#/home">Home</a>
+        <a class="block py-1 route-link" data-page="services" href="#/services">Services</a>
+        <a class="block py-1 route-link" data-page="work" href="#/work">Case Studies</a>
+        <a class="block py-1 route-link" data-page="about" href="#/about">About</a>
+      </div>
+      <div>
+        <p class="font-semibold mb-2 text-white">More</p>
+        <a class="block py-1 route-link" data-page="blog" href="#/blog">Insights</a>
+        <a class="block py-1 route-link" data-page="contact" href="#/contact">Contact</a>
+        <a class="block py-1" href="https://www.instagram.com/cynexdigital.pk" target="_blank"
+          rel="noopener">Instagram</a>
+        <a class="block py-1" href="https://www.linkedin.com/company/cynex-digital/" target="_blank"
+          rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <p class="text-center text-xs mt-10 relative" style="color:#6f76a3">© 2026 Cynex Digital. All rights reserved.</p>
+  </footer>
+
+  <template id="tpl-home">
+    <section class="relative overflow-hidden px-5 pt-14 pb-16">
+      <div class="corner-accent"></div>
+      <div class="blob" style="width:340px;height:340px; top:-80px; right:-100px; background:var(--violet);"></div>
+      <div class="relative grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <p class="text-sm font-semibold" style="color:var(--blue)">Digital Agency · RAWALPINDI, Pakistan</p>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-[1.08] mt-3">Fueling brands with<br><span
+              class="grad-text">creative &amp; digital</span> excellence.</h1>
+          <p class="mt-5 text-lg" style="color:var(--muted); max-width:44ch;">From concept to conversion, we build your
+            vision — strategy, design and development under one roof.</p>
+          <div class="mt-8 flex gap-4">
+            <a href="#/contact" class="route-link grad-btn text-white font-semibold px-7 py-3 rounded-full"
+              data-page="contact">Get Started</a>
+            <a href="#/work" class="route-link ring-line font-semibold px-7 py-3 rounded-full" data-page="work">See our
+              work</a>
+          </div>
+        </div>
+        <div class="card ring-line rounded-2xl p-6 grid grid-cols-2 gap-4 reveal shadow-xl shadow-blue-100/50">
+          <div>
+            <p class="text-3xl font-extrabold grad-text">120+</p>
+            <p class="text-sm mt-1" style="color:var(--muted)">Projects shipped</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold grad-text">40+</p>
+            <p class="text-sm mt-1" style="color:var(--muted)">Happy brands</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold grad-text">6</p>
+            <p class="text-sm mt-1" style="color:var(--muted)">Years building</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold grad-text">98%</p>
+            <p class="text-sm mt-1" style="color:var(--muted)">Client retention</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="px-5 py-14">
+      <div class="text-center max-w-xl mx-auto reveal">
+        <h2 class="text-3xl font-bold">What we do</h2>
+        <p class="mt-2" style="color:var(--muted)">Four services, one connected team.</p>
+      </div>
+      <div id="homeServices" class="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10"></div>
+    </section>
+    <section class="px-5 py-14">
+      <div class="rounded-2xl p-10 text-center reveal text-white relative overflow-hidden"
+        style="background:linear-gradient(120deg,var(--navy),var(--navy2));">
+        <div class="blob" style="width:260px;height:260px; top:-60px; left:-60px; background:var(--cyan); opacity:.25;">
+        </div>
+        <h2 class="text-2xl font-bold relative">Have a project in mind?</h2>
+        <p class="mt-2 relative" style="color:#b8bfe6">Tell us about it — we'll get back within a day.</p>
+        <a href="#/contact"
+          class="route-link grad-btn inline-block text-white font-semibold px-7 py-3 rounded-full mt-5 relative"
+          data-page="contact">Get a Quote</a>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-services">
+    <section class="px-5 pt-14 pb-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold reveal">Services</h1>
+      <p class="mt-2 max-w-xl" style="color:var(--muted)">Build accessibility into every service — from first sketch to
+        shipped product.</p>
+    </section>
+    <section class="px-5 py-8 grid gap-5" id="serviceDetail"></section>
+  </template>
+
+  <template id="tpl-work">
+    <section class="px-5 pt-14 pb-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold reveal">Case studies</h1>
+      <p class="mt-2 max-w-xl" style="color:var(--muted)">A portfolio built on real client outcomes.</p>
+    </section>
+    <section class="px-5 pb-4 flex flex-wrap gap-2" id="workFilters"></section>
+    <section class="px-5 py-8 grid sm:grid-cols-2 md:grid-cols-3 gap-5" id="workGrid"></section>
+  </template>
+
+  <template id="tpl-about">
+    <section class="px-5 py-14 grid md:grid-cols-2 gap-10">
+      <div class="reveal">
+        <h1 class="text-3xl md:text-4xl font-extrabold">About us</h1>
+        <p class="mt-4" style="color:var(--muted)">Cynex Digital is a full-service creative and digital agency. We pair
+          brand strategy with hands-on execution — design, development and marketing working from the same playbook, not
+          three separate vendors.</p>
+        <p class="mt-4" style="color:var(--muted)">We're small enough to move fast and senior enough to get it right the
+          first time.</p>
+        <a href="#/contact"
+          class="route-link grad-btn inline-block text-white font-semibold px-6 py-3 rounded-full mt-5"
+          data-page="contact">Contact Us</a>
+      </div>
+      <div class="card ring-line rounded-xl p-6 reveal">
+        <h3 class="font-semibold text-lg">Built on creativity, driven by digital</h3>
+        <p class="mt-3 text-sm" style="color:var(--muted)">We treat every brand as its own case study — no template
+          decks, no recycled ideas. Our team stays close to the numbers so creative choices are backed by what's
+          actually converting.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span style="color:var(--blue)">✓</span> Dedicated strategist per account</li>
+          <li class="flex gap-2"><span style="color:var(--blue)">✓</span> Weekly performance reporting</li>
+          <li class="flex gap-2"><span style="color:var(--blue)">✓</span> Design + dev under one team</li>
+        </ul>
+      </div>
+    </section>
+    <section class="px-5 py-10">
+      <h2 class="text-2xl font-bold text-center reveal">Our team</h2>
+      <div class="grid sm:grid-cols-3 gap-5 mt-8" id="teamGrid"></div>
+    </section>
+  </template>
+
+  <template id="tpl-blog">
+    <section class="px-5 pt-14 pb-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold reveal">Insights</h1>
+      <p class="mt-2 max-w-xl" style="color:var(--muted)">Notes from the studio on brand, product and growth.</p>
+    </section>
+    <section class="px-5 py-8 grid md:grid-cols-3 gap-5" id="blogGrid"></section>
+  </template>
+
+  <template id="tpl-contact">
+    <section class="px-5 py-14 grid md:grid-cols-2 gap-10">
+      <div class="reveal">
+        <h1 class="text-3xl md:text-4xl font-extrabold">Let's connect</h1>
+        <p class="mt-3" style="color:var(--muted)">Tell us about your project and we'll get back to you within a day.
+        </p>
+        <div class="mt-6 space-y-3 text-sm">
+          <p><span class="font-semibold">Email</span><br><span style="color:var(--muted)">hello@cynexdigital.pk</span>
+          </p>
+          <p><span class="font-semibold">Studio</span><br><span style="color:var(--muted)">RAWALPINDI, Pakistan</span>
+          </p>
+          <p><span class="font-semibold">Follow</span><br>
+            <a href="https://www.instagram.com/cynexdigital.pk" target="_blank" rel="noopener"
+              style="color:var(--blue)">Instagram</a> ·
+            <a href="https://www.linkedin.com/company/cynex-digital/" target="_blank" rel="noopener"
+              style="color:var(--blue)">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+      <div class="card ring-line rounded-2xl p-8 reveal shadow-xl shadow-blue-100/50">
+        <form id="contactForm" class="grid gap-4">
+          <div><label class="text-sm font-medium">Name</label><input required name="name" type="text"
+              placeholder="Your name" class="w-full mt-1 rounded-lg px-4 py-2.5 bg-transparent outline-none" /></div>
+          <div><label class="text-sm font-medium">Email</label><input required name="email" type="email"
+              placeholder="you@email.com" class="w-full mt-1 rounded-lg px-4 py-2.5 bg-transparent outline-none" />
+          </div>
+          <div><label class="text-sm font-medium">Project details</label><textarea required name="details" rows="4"
+              placeholder="Type your project here..."
+              class="w-full mt-1 rounded-lg px-4 py-2.5 bg-transparent outline-none"></textarea></div>
+          <button type="submit" class="grad-btn text-white font-semibold py-3 rounded-full">Send Message</button>
+          <p id="formMsg" class="text-sm text-center hidden" style="color:#16a34a">Thanks — we'll be in touch shortly.
+          </p>
+        </form>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    const icons = {
+      strategy: '<path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6M10 18h4"/>',
+      code: '<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/>',
+      megaphone: '<path d="M3 11v2a2 2 0 0 0 2 2h1l3 5V6L6 9H5a2 2 0 0 0-2 2Z"/><path d="M16 8a3 3 0 0 1 0 8M19 5a7 7 0 0 1 0 14"/>',
+      rocket: '<path d="M5 13c0-5 4-9 9-10 1 5-3 9-9 10Z"/><path d="M9 15l-4 4M9 15l-3-1M9 15l1 3"/><circle cx="12" cy="9" r="1.5"/>'
+    };
+    function icon(name) { return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`; }
+
+    const services = [
+      {
+        icon: 'strategy', title: 'Creative Strategy', short: 'Brand positioning and campaign direction built around what makes you different.',
+        long: 'We start with research, not templates: audience, competitors and category conventions worth breaking. The output is a positioning document and messaging framework your whole team can design and write from.'
+      },
+      {
+        icon: 'code', title: 'Web & App Development', short: 'Fast, responsive websites and apps designed to turn visitors into customers.',
+        long: 'From marketing sites to full product builds, we design and develop with performance and conversion in mind — clean code, fast load times, and interfaces tested with real users before launch.'
+      },
+      {
+        icon: 'megaphone', title: 'Social Media Marketing', short: 'Content and paid campaigns that build a following and keep it engaged.',
+        long: 'Content calendars, creative production and paid media managed together, so organic and paid reinforce the same message instead of competing for attention.'
+      },
+      {
+        icon: 'rocket', title: 'Digital Brand Building', short: 'Logo, identity and brand systems that hold up across every touchpoint.',
+        long: 'Logo, colour, type and voice, documented in a system your team and partners can apply consistently — from packaging to a pitch deck.'
+      }
+    ];
+    const cases = [
+      { title: 'Brand Refresh — Retail', tag: 'Creative Strategy', desc: 'Repositioned a home-goods retailer around a clearer story and a refreshed visual identity.' },
+      { title: 'E-commerce Rebuild', tag: 'Web & App Development', desc: 'Rebuilt a storefront for speed and mobile checkout, cutting cart abandonment.' },
+      { title: 'Launch Campaign', tag: 'Social Media Marketing', desc: 'Grew a new brand from zero to an engaged following across three platforms.' },
+      { title: 'Product Photography', tag: 'Digital Brand Building', desc: 'Full visual system and shoot for a DTC skincare line ahead of launch.' },
+      { title: 'App Onboarding Redesign', tag: 'Web & App Development', desc: 'Simplified sign-up flow, improving activation for a fintech app.' },
+      { title: 'Identity System', tag: 'Digital Brand Building', desc: 'Logo, colour and type system for a hospitality group opening its first location.' }
+    ];
+    const team = [
+      { name: 'Ayesha Khan', role: 'Creative Director' },
+      { name: 'Bilal Ahmed', role: 'Lead Developer' },
+      { name: 'Sara Malik', role: 'Growth Strategist' }
+    ];
+    const posts = [
+      { title: 'Why brand strategy comes before the logo', tag: 'Strategy', desc: 'A clear position makes every design decision after it easier to make and easier to defend.' },
+      { title: 'What actually moves conversion on a landing page', tag: 'Web', desc: 'Fewer sections, faster load, one clear next step — the basics still outperform the tricks.' },
+      { title: 'Planning a content calendar clients will approve fast', tag: 'Social', desc: 'How we structure review rounds so approvals take days, not weeks.' }
+    ];
+
+    function cardGradient(i) { return `linear-gradient(135deg, hsl(${195 + i * 20} 85% 55%), hsl(${255 + i * 18} 70% 50%))`; }
+
+    function renderHome() {
+      document.getElementById('homeServices').innerHTML = services.map(s => `
+    <div class="card ring-line rounded-xl p-6 reveal hover:shadow-lg transition-shadow">
+      <div class="w-11 h-11 rounded-lg icon-wrap flex items-center justify-center mb-4">${icon(s.icon)}</div>
+      <h3 class="font-semibold text-lg">${s.title}</h3>
+      <p class="text-sm mt-2" style="color:var(--muted)">${s.short}</p>
+      <a href="#/services" class="route-link inline-block mt-4 text-sm font-semibold" data-page="services" style="color:var(--blue)">Learn more →</a>
+    </div>`).join('');
+    }
+    function renderServices() {
+      document.getElementById('serviceDetail').innerHTML = services.map(s => `
+    <div class="card ring-line rounded-xl p-6 grid md:grid-cols-[auto_1fr_auto] gap-5 items-center reveal">
+      <div class="w-12 h-12 rounded-lg icon-wrap flex items-center justify-center">${icon(s.icon)}</div>
+      <div><h3 class="font-semibold text-lg">${s.title}</h3><p class="text-sm mt-1" style="color:var(--muted)">${s.long}</p></div>
+      <a href="#/contact" class="route-link ring-line font-semibold px-5 py-2.5 rounded-full text-sm whitespace-nowrap" data-page="contact">Get Started</a>
+    </div>`).join('');
+    }
+    function renderWork(filter) {
+      const tags = ['All', ...new Set(cases.map(c => c.tag))];
+      document.getElementById('workFilters').innerHTML = tags.map(t =>
+        `<button class="filter-btn ring-line rounded-full px-4 py-1.5 text-sm ${t === filter ? 'active' : ''}" data-filter="${t}">${t}</button>`).join('');
+      const list = cases.filter(c => filter === 'All' || c.tag === filter);
+      document.getElementById('workGrid').innerHTML = list.map((c, i) => `
+    <div class="card ring-line rounded-xl overflow-hidden reveal">
+      <div class="h-32" style="background:${cardGradient(i)}"></div>
+      <div class="p-5"><p class="text-xs font-semibold" style="color:var(--blue)">${c.tag}</p>
+      <h3 class="font-semibold mt-1">${c.title}</h3><p class="text-sm mt-2" style="color:var(--muted)">${c.desc}</p></div>
+    </div>`).join('');
+      document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => renderWork(b.dataset.filter)));
+    }
+    function renderAbout() {
+      document.getElementById('teamGrid').innerHTML = team.map((t, i) => `
+    <div class="card ring-line rounded-xl p-6 text-center reveal">
+      <div class="w-16 h-16 rounded-full mx-auto" style="background:${cardGradient(i)}"></div>
+      <h3 class="font-semibold mt-3">${t.name}</h3><p class="text-sm" style="color:var(--muted)">${t.role}</p>
+    </div>`).join('');
+    }
+    function renderBlog() {
+      document.getElementById('blogGrid').innerHTML = posts.map((p, i) => `
+    <div class="card ring-line rounded-xl overflow-hidden reveal">
+      <div class="h-28" style="background:${cardGradient(i)}"></div>
+      <div class="p-5"><p class="text-xs font-semibold" style="color:var(--blue)">${p.tag}</p>
+      <h3 class="font-semibold mt-1">${p.title}</h3><p class="text-sm mt-2" style="color:var(--muted)">${p.desc}</p></div>
+    </div>`).join('');
+    }
+    function bindContactForm() {
+      const f = document.getElementById('contactForm');
+      if (!f) return;
+      f.addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('formMsg').classList.remove('hidden'); f.reset(); });
+    }
+
+    const pages = ['home', 'services', 'work', 'about', 'blog', 'contact'];
+    const app = document.getElementById('app');
+    function render(page) {
+      if (!pages.includes(page)) page = 'home';
+      app.innerHTML = document.getElementById('tpl-' + page).innerHTML;
+      document.querySelectorAll('.route-link').forEach(l => l.classList.toggle('active', l.dataset.page === page));
+      if (page === 'home') renderHome();
+      if (page === 'services') renderServices();
+      if (page === 'work') renderWork('All');
+      if (page === 'about') renderAbout();
+      if (page === 'blog') renderBlog();
+      bindContactForm();
+      const revealIo = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIo.unobserve(e.target); } }); }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => revealIo.observe(el));
+      window.scrollTo(0, 0);
+      mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex');
+    }
+    function route() { render(location.hash.replace('#/', '') || 'home'); }
+    window.addEventListener('hashchange', route);
+    const menuBtn = document.getElementById('menuBtn'), mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); mobileMenu.classList.toggle('flex'); });
+    route();
+  </script>
+</body>
+
+</html>
