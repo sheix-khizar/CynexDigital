@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { projects } from '../../data/projectsData';
 import ProjectDetailModal from './ProjectDetailModal';
-import { ArrowUpRight, Sparkles, Filter, ChevronRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Sparkles, ChevronRight } from 'lucide-react';
 
-export default function WorkSection({ onDiscussProject, isDedicatedPage = false, onNavigate }) {
+export default function WorkSection({ _onDiscussProject, isDedicatedPage = false, onNavigate }) {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -285,10 +285,6 @@ export default function WorkSection({ onDiscussProject, isDedicatedPage = false,
         project={selectedProject}
         isOpen={!!selectedProject}
         onClose={() => setSelectedProject(null)}
-        onDiscuss={(title) => {
-          setSelectedProject(null);
-          onDiscussProject(title);
-        }}
       />
     </section>
   );

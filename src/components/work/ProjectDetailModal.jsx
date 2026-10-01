@@ -1,8 +1,8 @@
 import React from 'react';
 import Modal from '../common/Modal';
-import { TrendingUp, ArrowRight, CheckCircle2, Calendar, UserCheck } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
-export default function ProjectDetailModal({ project, isOpen, onClose, onDiscussSimilar }) {
+export default function ProjectDetailModal({ project, isOpen, onClose }) {
   if (!project) return null;
 
   return (
@@ -13,14 +13,12 @@ export default function ProjectDetailModal({ project, isOpen, onClose, onDiscuss
       subtitle={`Client Case Study // ${project.tag}`}
       maxWidth="800px"
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.35rem' }}>
         {/* Banner with photo & meta */}
         <div 
+          className="project-modal-banner"
           style={{
             background: project.gradient,
-            borderRadius: 'var(--radius-md)',
-            padding: '2.5rem 2rem',
-            color: '#ffffff',
             position: 'relative',
             overflow: 'hidden'
           }}
@@ -43,41 +41,48 @@ export default function ProjectDetailModal({ project, isOpen, onClose, onDiscuss
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(180deg, rgba(8, 14, 28, 0.6) 0%, rgba(8, 14, 28, 0.88) 100%)',
+              background: 'linear-gradient(180deg, rgba(8, 14, 28, 0.72) 0%, rgba(8, 14, 28, 0.92) 100%)',
               zIndex: 1
             }} 
           />
           <div style={{ position: 'relative', zIndex: 2 }}>
-            <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.85rem', marginBottom: '0.5rem', opacity: 0.9 }}>
-              <span>Client: <strong>{project.client}</strong></span>
-              <span>Year: <strong>{project.year}</strong></span>
+            <div className="modal-banner-meta">
+              <span className="modal-meta-pill">
+                Client: <strong>{project.client}</strong>
+              </span>
+              <span className="modal-meta-pill">
+                Year: <strong>{project.year}</strong>
+              </span>
+              <span className="modal-meta-pill">
+                Service: <strong>{project.tag}</strong>
+              </span>
             </div>
-            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.3 }}>
+            <p className="project-modal-desc">
               {project.desc}
-            </h3>
+            </p>
           </div>
         </div>
 
         {/* Quantifiable Results Grid */}
         <div>
-          <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.65rem' }}>
             Measurable Client Outcomes
           </h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem' }}>
             {project.metrics.map((m, i) => (
               <div 
                 key={i}
                 style={{
                   background: 'var(--bg-surface-elevated)',
                   border: '1px solid var(--border-color)',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '1.25rem'
+                  borderRadius: '12px',
+                  padding: '1rem'
                 }}
               >
-                <div className="text-gradient" style={{ fontSize: '1.8rem', fontWeight: 800 }}>
+                <div className="text-gradient" style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.2 }}>
                   {m.value}
                 </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '0.25rem', lineHeight: 1.3 }}>
                   {m.label}
                 </div>
               </div>
@@ -86,21 +91,21 @@ export default function ProjectDetailModal({ project, isOpen, onClose, onDiscuss
         </div>
 
         {/* Challenge vs Solution */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-          <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, color: '#f87171', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '1.1rem 1rem', borderRadius: '12px' }}>
+            <div style={{ fontWeight: 700, color: '#f87171', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
               The Challenge
             </div>
-            <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: '1.55' }}>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
               {project.challenge}
             </p>
           </div>
 
-          <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, color: '#34d399', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+          <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', padding: '1.1rem 1rem', borderRadius: '12px' }}>
+            <div style={{ fontWeight: 700, color: '#34d399', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
               Our Strategic Solution
             </div>
-            <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: '1.55' }}>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
               {project.solution}
             </p>
           </div>
@@ -108,32 +113,25 @@ export default function ProjectDetailModal({ project, isOpen, onClose, onDiscuss
 
         {/* Deliverables Provided */}
         <div>
-          <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.65rem' }}>
             Production Deliverables
           </h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
             {project.deliverables.map((deliv, i) => (
-              <span key={i} className="badge badge-brand" style={{ textTransform: 'none', fontSize: '0.82rem' }}>
-                <CheckCircle2 size={13} /> {deliv}
+              <span key={i} className="badge badge-brand" style={{ textTransform: 'none', fontSize: '0.78rem', padding: '0.3rem 0.65rem' }}>
+                <CheckCircle2 size={12} /> {deliv}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Action Button */}
-        <div style={{ display: 'flex', gap: '1rem', paddingTop: '0.5rem', paddingBottom: '1.25rem', flexWrap: 'wrap' }}>
+        {/* Bottom Close Button */}
+        <div style={{ paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>
           <button 
-            onClick={() => {
-              onClose();
-              onDiscussSimilar(project.title);
-            }} 
-            className="btn btn-primary"
-            style={{ flex: 1 }}
+            onClick={onClose} 
+            className="btn btn-secondary"
+            style={{ width: '100%', justifyContent: 'center', padding: '0.7rem 1.25rem', borderRadius: 'var(--radius-full)', fontSize: '0.9rem' }}
           >
-            <span>Discuss A Similar Project With Our Team</span>
-            <ArrowRight size={16} />
-          </button>
-          <button onClick={onClose} className="btn btn-secondary">
             Close Case Study
           </button>
         </div>

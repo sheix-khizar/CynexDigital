@@ -75,14 +75,25 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
         </button>
 
         {(title || subtitle) && (
-          <div style={{ marginBottom: '1.5rem', paddingRight: '2.5rem' }}>
+          <div style={{ marginBottom: '1.25rem', paddingRight: '2.5rem' }}>
             {subtitle && (
-              <span className="badge badge-brand" style={{ marginBottom: '0.5rem' }}>
+              <span 
+                className="badge badge-brand" 
+                style={{ 
+                  marginBottom: '0.4rem', 
+                  fontSize: '0.72rem', 
+                  letterSpacing: '0.04em',
+                  display: 'inline-block',
+                  maxWidth: '100%',
+                  whiteSpace: 'normal',
+                  lineHeight: 1.4
+                }}
+              >
                 {subtitle}
               </span>
             )}
             {title && (
-              <h2 style={{ fontSize: '1.6rem', marginTop: '0.25rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.15rem, 3.8vw, 1.55rem)', fontWeight: 800, marginTop: '0.2rem', lineHeight: 1.25 }}>
                 {title}
               </h2>
             )}
