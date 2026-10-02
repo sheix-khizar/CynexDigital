@@ -277,12 +277,16 @@ export default function PrivacyPolicyPage({ onNavigate }) {
               How Cynex Digital safeguards client data, ad account credentials, marketing analytics, and confidentiality under rigorous enterprise standards.
             </p>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginTop: '1.5rem', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-              <span>Effective Date: <strong>October 1, 2026</strong></span>
-              <span>·</span>
-              <span>Version: <strong>2.4 (Enterprise)</strong></span>
-              <span>·</span>
-              <span>Governing Jurisdiction: <strong>Pakistan & International Commercial Code</strong></span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
+              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                Effective: <strong style={{ color: 'var(--text-primary)' }}>October 1, 2026</strong>
+              </span>
+              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                Version: <strong style={{ color: 'var(--text-primary)' }}>2.4 (Enterprise)</strong>
+              </span>
+              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                Jurisdiction: <strong style={{ color: 'var(--text-primary)' }}>Pakistan & Int. Code</strong>
+              </span>
             </div>
           </div>
 
@@ -290,9 +294,9 @@ export default function PrivacyPolicyPage({ onNavigate }) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))',
               gap: '1rem',
-              marginBottom: '4rem'
+              marginBottom: '3.5rem'
             }}
           >
             {[
@@ -326,16 +330,7 @@ export default function PrivacyPolicyPage({ onNavigate }) {
           </div>
 
           {/* Main Legal Content with Sticky Quick-Jump Sidebar */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '260px 1fr',
-              gap: '3.5rem',
-              alignItems: 'start',
-              paddingBottom: '6rem'
-            }}
-            className="legal-layout-grid"
-          >
+          <div className="legal-layout-grid">
             {/* Sidebar Navigation */}
             <aside
               style={{

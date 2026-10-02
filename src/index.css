@@ -194,6 +194,8 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 20px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -202,8 +204,14 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+  max-width: 100%;
   overflow-x: hidden;
   transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Ambient glow and subtle top vignette (ProLaps signature) */
@@ -2518,16 +2526,23 @@ html.lenis, html.lenis body {
   grid-template-columns: 260px 1fr;
   gap: 3.5rem;
   align-items: start;
+  padding-bottom: 6rem;
 }
 
 @media (max-width: 860px) {
   .legal-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding-bottom: 3.5rem !important;
   }
   .legal-layout-grid aside {
     position: static !important;
     top: auto !important;
+    width: 100% !important;
+  }
+  .legal-layout-grid > div:last-child {
+    width: 100% !important;
   }
 }
 
@@ -2550,12 +2565,19 @@ html.lenis, html.lenis body {
 
 @media (max-width: 960px) {
   .article-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
   }
   .article-layout-grid aside {
     position: static !important;
     top: auto !important;
+    width: 100% !important;
+    order: 2 !important;
+  }
+  .article-layout-grid main {
+    width: 100% !important;
+    order: 1 !important;
   }
 }
 
@@ -2618,5 +2640,22 @@ html.lenis, html.lenis body {
 .article-table tr:last-child td {
   border-bottom: none;
 }
+
+/* Contact Form Mobile Layout Enhancements */
+@media (max-width: 640px) {
+  .contact-submit-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1.25rem !important;
+  }
+  .contact-submit-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .contact-guarantee-text {
+    text-align: center !important;
+  }
+}
+
 
 

@@ -56,7 +56,7 @@ export default function EstimatorModal({ isOpen, onClose, onSubmitEstimate }) {
           <label style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.6rem', display: 'block' }}>
             1. Select Project Archetype
           </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.6rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '0.6rem' }}>
             {calculatorOptions.projectTypes.map((type) => (
               <button
                 key={type.id}
@@ -88,7 +88,7 @@ export default function EstimatorModal({ isOpen, onClose, onSubmitEstimate }) {
           <label style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.6rem', display: 'block' }}>
             2. Scope & Complexity Tier
           </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 90px), 1fr))', gap: '0.6rem' }}>
             {calculatorOptions.scopes.map((sc) => (
               <button
                 key={sc.id}
@@ -112,7 +112,7 @@ export default function EstimatorModal({ isOpen, onClose, onSubmitEstimate }) {
         </div>
 
         {/* Step 3: Speed & Add-ons */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.25rem' }}>
           <div>
             <label style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.6rem', display: 'block' }}>
               3. Delivery Velocity
@@ -229,7 +229,7 @@ export default function EstimatorModal({ isOpen, onClose, onSubmitEstimate }) {
             type="button"
             onClick={handleApplyToContact}
             className="btn btn-primary"
-            style={{ padding: '0.85rem 1.8rem' }}
+            style={{ padding: '0.85rem 1.8rem', flex: '1 1 auto', justifyContent: 'center' }}
           >
             <span>Lock Estimate & Request Proposal</span>
             <ArrowRight size={16} />

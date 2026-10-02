@@ -71,7 +71,7 @@ export default function ServiceDetailPage({ serviceSlug, onNavigate, onContactSe
           </nav>
 
           {/* Hero Content Layout */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '3rem', alignItems: 'center' }}>
             <div>
               <div className="prolaps-eyebrow" style={{ marginBottom: '1.25rem' }}>
                 <span className="prolaps-live-dot" />
@@ -237,7 +237,7 @@ export default function ServiceDetailPage({ serviceSlug, onNavigate, onContactSe
       {/* Section 1: What this includes */}
       <section id="capabilities" className="section-spacing" style={{ position: 'relative' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '3.5rem', alignItems: 'start' }}>
             {/* Left: Deliverables 2-Column Grid */}
             <div>
               <div className="prolaps-eyebrow" style={{ marginBottom: '0.75rem' }}>
@@ -439,7 +439,7 @@ export default function ServiceDetailPage({ serviceSlug, onNavigate, onContactSe
               </button>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
               {relatedProjects.map((proj) => (
                 <div
                   key={proj.id}

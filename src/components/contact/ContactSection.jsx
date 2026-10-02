@@ -20,6 +20,132 @@ export const GOOGLE_FORM_CONFIG = {
   }
 };
 
+// Accessible, card-bounded custom dropdown to prevent OS mobile popup overflow and support dark/light theme
+function CustomDropdown({ label, name, value, options, placeholder, onChange }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = React.useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleSelect = (option) => {
+    onChange({ target: { name, value: option } });
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="form-group" style={{ margin: 0, position: 'relative' }} ref={dropdownRef}>
+      <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+        {label}
+      </label>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0.85rem 1.15rem',
+          borderRadius: '12px',
+          background: 'var(--bg-input)',
+          border: isOpen ? '1px solid var(--blue-vivid)' : '1px solid var(--border-color)',
+          fontSize: '0.92rem',
+          color: value ? 'var(--text-primary)' : 'var(--text-muted)',
+          cursor: 'pointer',
+          textAlign: 'left',
+          transition: 'all 0.2s ease',
+          boxShadow: isOpen ? '0 0 0 3px rgba(15, 98, 254, 0.15)' : 'none'
+        }}
+      >
+        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: '0.5rem' }}>
+          {value || placeholder}
+        </span>
+        <ChevronRight
+          size={16}
+          style={{
+            transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+            transition: 'transform 0.2s ease',
+            color: 'var(--text-muted)',
+            flexShrink: 0
+          }}
+        />
+      </button>
+
+      {isOpen && (
+        <div
+          role="listbox"
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 6px)',
+            left: 0,
+            right: 0,
+            zIndex: 90,
+            background: 'var(--bg-surface-elevated, #ffffff)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '12px',
+            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+            maxHeight: '240px',
+            overflowY: 'auto',
+            padding: '0.35rem',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)'
+          }}
+        >
+          {options.map((opt) => {
+            const isSelected = value === opt;
+            return (
+              <div
+                key={opt}
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => handleSelect(opt)}
+                style={{
+                  padding: '0.7rem 0.9rem',
+                  borderRadius: '8px',
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  color: isSelected ? 'var(--blue-vivid)' : 'var(--text-primary)',
+                  background: isSelected ? 'rgba(15, 98, 254, 0.12)' : 'transparent',
+                  fontWeight: isSelected ? 600 : 400,
+                  transition: 'background 0.15s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSelected) e.currentTarget.style.background = 'var(--bg-subtle, rgba(255,255,255,0.06))';
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSelected) e.currentTarget.style.background = 'transparent';
+                }}
+              >
+                <span>{opt}</span>
+                {isSelected && <CheckCircle2 size={15} color="var(--blue-vivid)" />}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ContactSection({ prefillData, onToast, isDedicatedPage = false, onNavigate }) {
   const [formData, setFormData] = useState(() => ({
     name: '',
@@ -165,8 +291,8 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(2rem, 4vw, 3rem)',
             alignItems: 'start'
           }}
         >
@@ -433,68 +559,24 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 </div>
 
                 {/* Row 3: What do you need? & Indicative budget */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
-                  <div className="form-group" style={{ margin: 0 }}>
-                    <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                      What do you need?
-                    </label>
-                    <div style={{ position: 'relative' }}>
-                      <select
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="form-select"
-                        style={{
-                          width: '100%',
-                          padding: '0.85rem 1.15rem',
-                          borderRadius: '12px',
-                          background: 'var(--bg-input)',
-                          border: '1px solid var(--border-color)',
-                          fontSize: '0.92rem',
-                          color: formData.service ? 'var(--text-primary)' : 'var(--text-muted)',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        <option value="">Select a service</option>
-                        {servicesList.map(srv => (
-                          <option key={srv} value={srv} style={{ color: 'var(--text-primary)' }}>
-                            {srv}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                  <CustomDropdown
+                    label="What do you need?"
+                    name="service"
+                    value={formData.service}
+                    options={servicesList}
+                    placeholder="Select a service"
+                    onChange={handleChange}
+                  />
 
-                  <div className="form-group" style={{ margin: 0 }}>
-                    <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                      Indicative budget
-                    </label>
-                    <div style={{ position: 'relative' }}>
-                      <select
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="form-select"
-                        style={{
-                          width: '100%',
-                          padding: '0.85rem 1.15rem',
-                          borderRadius: '12px',
-                          background: 'var(--bg-input)',
-                          border: '1px solid var(--border-color)',
-                          fontSize: '0.92rem',
-                          color: formData.budget ? 'var(--text-primary)' : 'var(--text-muted)',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        <option value="">Select a range</option>
-                        {budgetOptions.map(b => (
-                          <option key={b} value={b} style={{ color: 'var(--text-primary)' }}>
-                            {b}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                  <CustomDropdown
+                    label="Indicative budget"
+                    name="budget"
+                    value={formData.budget}
+                    options={budgetOptions}
+                    placeholder="Select a range"
+                    onChange={handleChange}
+                  />
                 </div>
 
                 {/* Row 4: Tell us about the project */}
@@ -532,12 +614,13 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                     justifyContent: 'space-between', 
                     alignItems: 'center', 
                     gap: '1.5rem', 
-                    paddingTop: '0.5rem' 
+                    paddingTop: '0.5rem',
+                    flexWrap: 'wrap'
                   }}
                 >
                   <p 
                     className="contact-guarantee-text"
-                    style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: 0, lineHeight: 1.5, flex: '1 1 auto' }}
+                    style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: 0, lineHeight: 1.5, flex: '1 1 220px' }}
                   >
                     We reply within one business day. Your details stay with us and are never sold or shared.
                   </p>

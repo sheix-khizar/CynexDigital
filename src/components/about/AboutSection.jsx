@@ -66,7 +66,7 @@ export default function AboutSection({ onContactClick, isDedicatedPage = false, 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '2.5rem',
             alignItems: 'center',
             marginBottom: '5rem'
@@ -95,7 +95,7 @@ export default function AboutSection({ onContactClick, isDedicatedPage = false, 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
               gap: '1.25rem'
             }}
           >
