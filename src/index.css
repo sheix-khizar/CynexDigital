@@ -2657,5 +2657,21 @@ html.lenis, html.lenis body {
   }
 }
 
+/* Contact Page Layout Grid (Form on Left, Studio Info on Right) */
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+
 
 

@@ -287,134 +287,9 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
           </div>
         )}
 
-        {/* Contact Container Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-            gap: 'clamp(2rem, 4vw, 3rem)',
-            alignItems: 'start'
-          }}
-        >
-          {/* Left Column: Direct Studio Details */}
-          <div>
-            <div
-              className="glass-card card-padded contact-info-card"
-              style={{
-                marginBottom: '2rem'
-              }}
-            >
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '1rem' }}>
-                Studio Direct Contact
-              </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-                We believe in genuine, collaborative partnerships. Reach out directly or connect with us across our social channels.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <div className="icon-btn" style={{ flexShrink: 0 }}>
-                    <Mail size={18} color="var(--cyan-light)" />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Direct Inquiries</div>
-                    <a href="mailto:hello@cynexdigital.pk" style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      hello@cynexdigital.pk
-                    </a>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <div className="icon-btn" style={{ flexShrink: 0 }}>
-                    <MapPin size={18} color="var(--blue-vivid)" />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Studio Base</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      RAWALPINDI, Punjab, Pakistan
-                    </div>
-                    <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                      Partnering with clients across Pakistan, UAE, UK & USA
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <div className="icon-btn" style={{ flexShrink: 0 }}>
-                    <Clock size={18} color="#10b981" />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Working Hours & Response SLA</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      Monday – Friday (09:00 – 19:00 PKT)
-                    </div>
-                    <div style={{ fontSize: '0.82rem', color: '#34d399' }}>
-                      Guaranteed reply within 24 business hours
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Official Social Links Card */}
-            <div
-              className="glass-card"
-              style={{
-                padding: '1.25rem 1.5rem',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem',
-                marginBottom: '1.5rem'
-              }}
-            >
-              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Follow Our Journey
-              </div>
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <a
-                  href="https://www.instagram.com/cynexdigital.pk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary btn-sm"
-                  style={{ gap: '0.4rem', fontSize: '0.8rem' }}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
-                  <span>@cynexdigital.pk</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/cynex-digital/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary btn-sm"
-                  style={{ gap: '0.4rem', fontSize: '0.8rem' }}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="9" width="4" height="12" /><circle cx="5" cy="4" r="2" /><path d="M11 9v12M11 13c0-2 2-4 4-4s4 2 4 4v8" /></svg>
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Client Privacy Commitment Card */}
-            <div
-              style={{
-                padding: '1.25rem',
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--bg-surface-elevated)',
-                border: '1px solid var(--border-color)',
-                display: 'flex',
-                gap: '0.75rem',
-                alignItems: 'center'
-              }}
-            >
-              <ShieldCheck size={22} color="var(--cyan-light)" style={{ flexShrink: 0 }} />
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.5' }}>
-                All initial inquiries and concept discussions are strictly protected under mutual confidentiality.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Modern Project Proposal Form (Styled after Reference Design) */}
+        {/* Contact Container Grid (Form on Left, Studio Details on Right) */}
+        <div className="contact-layout-grid">
+          {/* Left Column: Modern Project Proposal Form (Styled after Reference Design) */}
           <div
             className="glass-card"
             style={{
@@ -646,6 +521,124 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 </div>
               </form>
             )}
+          </div>
+
+          {/* Right Column: Direct Studio Details */}
+          <div>
+            <div
+              className="glass-card card-padded contact-info-card"
+              style={{
+                marginBottom: '2rem'
+              }}
+            >
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '1rem' }}>
+                Studio Direct Contact
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '2rem' }}>
+                We believe in genuine, collaborative partnerships. Reach out directly or connect with us across our social channels.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="icon-btn" style={{ flexShrink: 0 }}>
+                    <Mail size={18} color="var(--cyan-light)" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Direct Inquiries</div>
+                    <a href="mailto:hello@cynexdigital.pk" style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                      hello@cynexdigital.pk
+                    </a>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="icon-btn" style={{ flexShrink: 0 }}>
+                    <MapPin size={18} color="var(--blue-vivid)" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Studio Base</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                      RAWALPINDI, Punjab, Pakistan
+                    </div>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                      Partnering with clients across Pakistan, UAE, UK & USA
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="icon-btn" style={{ flexShrink: 0 }}>
+                    <Clock size={18} color="#10b981" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Working Hours & Response SLA</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                      Monday – Friday (09:00 – 19:00 PKT)
+                    </div>
+                    <div style={{ fontSize: '0.82rem', color: '#34d399' }}>
+                      Guaranteed reply within 24 business hours
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Official Social Links Card */}
+            <div
+              className="glass-card"
+              style={{
+                padding: '1.25rem 1.5rem',
+                borderRadius: 'var(--radius-md)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.75rem',
+                marginBottom: '1.5rem'
+              }}
+            >
+              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Follow Our Journey
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
+                <a
+                  href="https://www.instagram.com/cynexdigital.pk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  style={{ gap: '0.4rem', fontSize: '0.8rem' }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
+                  <span>@cynexdigital.pk</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/cynex-digital/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  style={{ gap: '0.4rem', fontSize: '0.8rem' }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="9" width="4" height="12" /><circle cx="5" cy="4" r="2" /><path d="M11 9v12M11 13c0-2 2-4 4-4s4 2 4 4v8" /></svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Client Privacy Commitment Card */}
+            <div
+              style={{
+                padding: '1.25rem',
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--bg-surface-elevated)',
+                border: '1px solid var(--border-color)',
+                display: 'flex',
+                gap: '0.75rem',
+                alignItems: 'center'
+              }}
+            >
+              <ShieldCheck size={22} color="var(--cyan-light)" style={{ flexShrink: 0 }} />
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.5' }}>
+                All initial inquiries and concept discussions are strictly protected under mutual confidentiality.
+              </p>
+            </div>
           </div>
         </div>
       </div>
