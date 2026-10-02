@@ -25,6 +25,6 @@ export const agencyFaqs = [
   },
   {
     question: "How do we get started with Cynex Digital?",
-    answer: "You can send us an inquiry directly through our Contact form or configure your requirements using our Instant Project Estimator. Our team will review your brief and schedule a free 30-minute discovery call within 24 hours to present a tailored growth roadmap."
+    answer: "You can send us an inquiry directly through our Contact form. Our team will review your brief and schedule a free 30-minute discovery call within 24 hours to present a tailored growth roadmap."
   }
 ];

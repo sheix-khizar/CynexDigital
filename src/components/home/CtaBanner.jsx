@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sparkles, ArrowRight, Calendar, ShieldCheck } from 'lucide-react';
 
-export default function CtaBanner({ onContactClick, onOpenEstimator }) {
+export default function CtaBanner({ onContactClick }) {
   return (
     <section className="section-spacing" style={{ position: 'relative' }}>
       <div className="container">
@@ -56,10 +56,6 @@ export default function CtaBanner({ onContactClick, onOpenEstimator }) {
               <button onClick={onContactClick} className="btn btn-primary btn-lg">
                 <span>Get In Touch Today</span>
                 <ArrowRight size={18} />
-              </button>
-
-              <button onClick={onOpenEstimator} className="btn btn-secondary btn-lg">
-                <span>Run Instant Cost Estimator</span>
               </button>
             </div>
 

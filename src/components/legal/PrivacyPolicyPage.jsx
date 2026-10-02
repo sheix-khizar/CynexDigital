@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage({ onNavigate }) {
                 A. Direct Information Provided by You
               </strong>
               <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Full name, professional email address, WhatsApp / phone number, company name, website URL, monthly advertising budget, target growth goals, and project scope details submitted via our contact forms or Discovery Estimator.
+                Full name, professional email address, WhatsApp / phone number, company name, website URL, monthly advertising budget, target growth goals, and project scope details submitted via our contact forms and proposal requests.
               </p>
             </div>
 

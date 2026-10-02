@@ -10,7 +10,6 @@ import ServicesSection from './components/services/ServicesSection';
 import ServiceDetailPage from './components/services/ServiceDetailPage';
 import WorkSection from './components/work/WorkSection';
 import AboutSection from './components/about/AboutSection';
-import EstimatorModal from './components/pricing/EstimatorModal';
 import BlogSection from './components/blog/BlogSection';
 import ArticleDetailPage from './components/blog/ArticleDetailPage';
 import FaqSection from './components/common/FaqSection';
@@ -26,7 +25,6 @@ export default function App() {
   const [activeServiceSlug, setActiveServiceSlug] = useState(null);
   const [activeBlogSlug, setActiveBlogSlug] = useState(null);
   const [theme, setTheme] = useState('light');
-  const [isEstimatorOpen, setIsEstimatorOpen] = useState(false);
   const [prefillContact, setPrefillContact] = useState(null);
   const [toasts, setToasts] = useState([]);
 
@@ -138,17 +136,6 @@ export default function App() {
     }
   };
 
-  // Handler for estimator completion
-  const handleApplyEstimate = (estimateData) => {
-    setPrefillContact({
-      service: estimateData.projectType,
-      priceRange: estimateData.priceRange,
-      details: `Configured via Instant Estimator:\n- Archetype: ${estimateData.projectType}\n- Scope Tier: ${estimateData.scope}\n- Velocity: ${estimateData.speed}\n- Add-ons: ${estimateData.addons.length ? estimateData.addons.join(', ') : 'None'}\n- Estimated Investment: ${estimateData.priceRange}`
-    });
-    showToast(`Estimate locked (${estimateData.priceRange})! Applied to project proposal form.`);
-    navigateTo('contact');
-  };
-
   // Handler when selecting a service card for proposal
   const handleSelectServiceForQuote = (serviceTitle, customDetails) => {
     setPrefillContact({
@@ -158,7 +145,6 @@ export default function App() {
     showToast(`Added ${serviceTitle} to proposal form.`);
     navigateTo('contact');
   };
-
 
   // Handler when discussing similar project from work
   const handleDiscussProject = (projectTitle) => {
@@ -180,7 +166,6 @@ export default function App() {
         setActivePage={navigateTo}
         theme={theme}
         toggleTheme={toggleTheme}
-        onOpenEstimator={() => setIsEstimatorOpen(true)}
       />
 
       {/* Dynamic Multi-Page Router Rendering */}
@@ -191,7 +176,6 @@ export default function App() {
             {/* Hero Section with ProLaps 3D Tilted Ribbon & Quick-Scale Drawer */}
             <Hero
               onNavigate={navigateTo}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
               onSelectServiceForContact={handleSelectServiceForQuote}
             />
 
@@ -221,7 +205,6 @@ export default function App() {
             {/* High-Impact CTA Banner */}
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
@@ -237,7 +220,6 @@ export default function App() {
             <ProcessSection />
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
@@ -262,7 +244,6 @@ export default function App() {
             <TestimonialsSlider />
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
@@ -278,11 +259,9 @@ export default function App() {
             <ProcessSection />
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
-
 
         {/* Dedicated Insights Page */}
         {activePage === 'blog' && (
@@ -294,7 +273,6 @@ export default function App() {
             />
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
@@ -330,7 +308,6 @@ export default function App() {
             />
             <CtaBanner
               onContactClick={() => navigateTo('contact')}
-              onOpenEstimator={() => setIsEstimatorOpen(true)}
             />
           </div>
         )}
@@ -349,13 +326,6 @@ export default function App() {
           </div>
         )}
       </main>
-
-      {/* Dynamic Project Estimator Modal */}
-      <EstimatorModal
-        isOpen={isEstimatorOpen}
-        onClose={() => setIsEstimatorOpen(false)}
-        onSubmitEstimate={handleApplyEstimate}
-      />
 
       {/* Site Footer */}
       <Footer onNavigate={navigateTo} />

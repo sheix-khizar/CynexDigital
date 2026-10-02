@@ -4,7 +4,7 @@ import {
   ShieldCheck, Zap, BarChart3, Eye, ShoppingBag, Search, Layers, Play, Globe, Palette
 } from 'lucide-react';
 
-export default function Hero({ onNavigate, onOpenEstimator, onSelectServiceForContact }) {
+export default function Hero({ onNavigate, onSelectServiceForContact }) {
   const [isRibbonPaused, setIsRibbonPaused] = useState(false);
   const [promptInput, setPromptInput] = useState('');
   const [activePill, setActivePill] = useState('Websites');
