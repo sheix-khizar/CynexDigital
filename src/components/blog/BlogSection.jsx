@@ -46,7 +46,7 @@ export default function BlogSection({ onToast, isDedicatedPage = false, onNaviga
             </h1>
 
             <p className="page-editorial-sub">
-              Practical guides and industry insights on brand positioning, modern web design, viral social media engines, and performance advertising.
+              Guides and playbooks on branding, modern web, social engines, and paid performance.
             </p>
           </div>
         ) : (
@@ -58,8 +58,8 @@ export default function BlogSection({ onToast, isDedicatedPage = false, onNaviga
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
               Insights on branding, <span className="text-gradient">creative & digital growth</span>.
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Practical strategies, design philosophies, and growth playbooks from our active client projects.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.5' }}>
+              Practical strategies and growth playbooks from active client campaigns.
             </p>
           </div>
         )}

@@ -48,8 +48,8 @@ export default function CtaBanner({ onContactClick }) {
               Have an ambitious project <br /><span className="text-gradient">in mind?</span>
             </h2>
 
-            <p style={{ color: 'var(--cta-banner-subtext)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2.5rem' }}>
-              Tell us about your brand goals, target timeline, or digital growth objectives. We'll review your vision and deliver a tailored recommendation within 24 hours.
+            <p style={{ color: 'var(--cta-banner-subtext)', fontSize: '1rem', lineHeight: '1.6', marginBottom: '2rem' }}>
+              Tell us about your goals. We'll review your project requirements and reply within 24 hours.
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -59,10 +59,10 @@ export default function CtaBanner({ onContactClick }) {
               </button>
             </div>
 
-            <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', fontSize: '0.82rem', color: 'var(--cta-banner-subtext)' }}>
-              <span>✓ Free 30-min strategy roadmap</span>
-              <span>✓ Fixed-price transparent quotes</span>
-              <span>✓ Direct principal attention</span>
+            <div style={{ marginTop: '1.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', fontSize: '0.82rem', color: 'var(--cta-banner-subtext)', flexWrap: 'wrap' }}>
+              <span>✓ Reply within 24 hours</span>
+              <span>✓ Transparent milestone pricing</span>
+              <span>✓ Dedicated senior squad</span>
             </div>
           </div>
         </div>

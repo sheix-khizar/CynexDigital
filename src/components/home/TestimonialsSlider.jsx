@@ -19,15 +19,15 @@ export default function TestimonialsSlider() {
     <section className="section-spacing" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3.5rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3rem auto' }}>
           <span className="badge badge-brand" style={{ marginBottom: '0.75rem' }}>
             Client Endorsements
           </span>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
+          <h2 className="testimonials-section-title">
             Trusted by founders who <span className="text-gradient">demand excellence</span>.
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-            Here is what partners say after collaborating with our senior creative and engineering teams.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: '1.5' }}>
+            What partners say after scaling with our team.
           </p>
         </div>
 
@@ -40,85 +40,57 @@ export default function TestimonialsSlider() {
             position: 'relative'
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
+          <div className="testimonial-card-header">
             {/* Stars */}
-            <div style={{ display: 'flex', gap: '0.3rem' }}>
+            <div className="testimonial-stars-wrap">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} fill="#f59e0b" color="#f59e0b" />
+                <Star key={i} size={16} fill="#f59e0b" color="#f59e0b" />
               ))}
             </div>
 
             {/* Metric pill */}
-            <span className="badge badge-green" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-              <Sparkles size={13} /> {current.metric}
+            <span className="badge badge-green testimonial-metric-badge">
+              <Sparkles size={12} /> {current.metric}
             </span>
           </div>
 
           {/* Quote Body */}
-          <p 
-            style={{
-              fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)',
-              lineHeight: 1.5,
-              fontWeight: 500,
-              color: 'var(--text-primary)',
-              marginBottom: '2.5rem',
-              fontFamily: 'var(--font-heading)'
-            }}
-          >
+          <p className="testimonial-quote-text">
             "{current.quote}"
           </p>
 
           {/* Author info & controls */}
-          <div 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '1.5rem',
-              borderTop: '1px solid var(--border-color)',
-              paddingTop: '1.5rem'
-            }}
-          >
+          <div className="testimonial-footer-row">
             {/* Author */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="testimonial-author-profile">
               <div 
+                className="testimonial-avatar-box"
                 style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: current.avatarBg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  fontSize: '1.1rem',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                  background: current.avatarBg
                 }}
               >
                 {current.author.charAt(0)}
               </div>
               <div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0 }}>
+                <h4 className="testimonial-author-name">
                   {current.author}
                 </h4>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
+                <p className="testimonial-author-role">
                   {current.role} · <strong style={{ color: 'var(--cyan-light)' }}>{current.company}</strong>
                 </p>
               </div>
             </div>
 
             {/* Slider Navigation Arrows */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <div className="testimonial-controls-wrap">
               <button 
                 onClick={prev}
                 className="icon-btn"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} />
               </button>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', minWidth: '45px', textAlign: 'center' }}>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', minWidth: '40px', textAlign: 'center' }}>
                 {currentIndex + 1} / {testimonials.length}
               </span>
               <button 
@@ -126,7 +98,7 @@ export default function TestimonialsSlider() {
                 className="icon-btn"
                 aria-label="Next testimonial"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>

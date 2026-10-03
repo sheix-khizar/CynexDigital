@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  FileText, CheckCircle2, ChevronRight, ShieldCheck, Scale, 
-  ArrowUpRight, Clock, Award, Briefcase, Mail, Globe, Zap, AlertTriangle
+  CheckCircle2, ChevronRight, ShieldCheck, 
+  ArrowUpRight, Clock, Mail, Globe, AlertTriangle
 } from 'lucide-react';
 
 export default function TermsConditionsPage({ onNavigate }) {
-  const [activeSection, setActiveSection] = useState('acceptance');
 
   const termsSections = [
     {
@@ -230,7 +229,7 @@ export default function TermsConditionsPage({ onNavigate }) {
       {/* Hero Header */}
       <section className="page-hero-header" style={{ position: 'relative' }}>
         <div className="container">
-          <div style={{ marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '820px', margin: '0 auto 3rem auto', textAlign: 'left' }}>
             <div className="page-breadcrumbs">
               <button onClick={() => onNavigate && onNavigate('home')}>Home</button>
               <ChevronRight size={14} />
@@ -250,192 +249,52 @@ export default function TermsConditionsPage({ onNavigate }) {
             </h1>
 
             <p className="page-editorial-sub">
-              Our clear, transparent commercial framework outlining project statements of work, 100% intellectual property ownership, milestone payments, and agency guarantees.
+              Our commercial framework covering milestone payments, full IP transfer, and service guarantees.
             </p>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Effective: <strong style={{ color: 'var(--text-primary)' }}>October 1, 2026</strong>
-              </span>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Version: <strong style={{ color: 'var(--text-primary)' }}>3.1 (Commercial)</strong>
-              </span>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Jurisdiction: <strong style={{ color: 'var(--text-primary)' }}>Pakistan & Int. Code</strong>
-              </span>
-            </div>
           </div>
 
-          {/* Guarantees Strip */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))',
-              gap: '1rem',
-              marginBottom: '3.5rem'
-            }}
-          >
-            {[
-              { icon: ShieldCheck, title: "100% IP Transfer", desc: "Full ownership of source code & design vectors upon final invoice settlement.", color: "#10b981" },
-              { icon: FileText, title: "Defined Scope SOW", desc: "No hidden charges or surprise scopes. Every sprint milestone is pre-locked.", color: "#0f62fe" },
-              { icon: Award, title: "30-Day Tech Warranty", desc: "Complimentary bug resolution & regression fixes post-production launch.", color: "#8b5cf6" },
-              { icon: Scale, title: "No Media Markups", desc: "Clients retain direct credit card billing with Meta, Google & TikTok ads.", color: "#f59e0b" }
-            ].map((card, idx) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    padding: '1.25rem',
-                    borderRadius: '14px',
-                    background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-color)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem'
-                  }}
-                >
-                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: `${card.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon size={16} color={card.color} />
-                  </div>
-                  <strong style={{ fontSize: '0.92rem', color: 'var(--text-primary)' }}>{card.title}</strong>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>{card.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Main Legal Content with Sticky Quick-Jump Sidebar */}
-          <div className="legal-layout-grid">
-            {/* Sidebar Navigation */}
-            <aside
-              style={{
-                position: 'sticky',
-                top: '110px',
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '16px',
-                padding: '1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.4rem'
-              }}
-            >
-              <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.5rem', paddingLeft: '0.5rem' }}>
-                Terms Table of Contents
-              </div>
+          {/* Simple Readable Content Container */}
+          <div className="legal-reader-container">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {termsSections.map((sec) => (
-                <a
-                  key={sec.id}
-                  href={`#${sec.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveSection(sec.id);
-                    const el = document.getElementById(sec.id);
-                    if (el) {
-                      const offset = 100;
-                      const bodyRect = document.body.getBoundingClientRect().top;
-                      const elementRect = el.getBoundingClientRect().top;
-                      const elementPosition = elementRect - bodyRect;
-                      const offsetPosition = elementPosition - offset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                  }}
-                  style={{
-                    padding: '0.55rem 0.75rem',
-                    borderRadius: '8px',
-                    fontSize: '0.84rem',
-                    fontWeight: activeSection === sec.id ? 600 : 500,
-                    color: activeSection === sec.id ? '#0f62fe' : 'var(--text-secondary)',
-                    background: activeSection === sec.id ? 'rgba(15, 98, 254, 0.08)' : 'transparent',
-                    textDecoration: 'none',
-                    display: 'block',
-                    transition: 'all 0.15s ease'
-                  }}
-                >
-                  {sec.title}
-                </a>
-              ))}
-
-              <div style={{ borderTop: '1px solid var(--border-color)', marginTop: '0.75rem', paddingTop: '0.75rem' }}>
-                <button
-                  onClick={() => onNavigate && onNavigate('privacy')}
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem 0.75rem',
-                    fontSize: '0.82rem',
-                    color: 'var(--text-primary)',
-                    background: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <span>Privacy Policy</span>
-                  <ArrowUpRight size={13} />
-                </button>
-              </div>
-            </aside>
-
-            {/* Content Sections */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              {termsSections.map((sec) => (
-                <section
+                <article
                   key={sec.id}
                   id={sec.id}
-                  style={{
-                    padding: '2rem',
-                    background: 'var(--bg-surface)',
-                    borderRadius: '16px',
-                    border: '1px solid var(--border-color)'
-                  }}
+                  className="legal-section-block"
                 >
-                  <h2
-                    style={{
-                      fontSize: '1.3rem',
-                      fontWeight: 700,
-                      color: 'var(--text-primary)',
-                      marginBottom: '1.25rem',
-                      fontFamily: 'var(--font-heading)'
-                    }}
-                  >
-                    {sec.title}
-                  </h2>
+                  <h2>{sec.title}</h2>
                   <div>{sec.content}</div>
-                </section>
+                </article>
               ))}
 
-              {/* Bottom Project Kickoff Banner */}
+              {/* Bottom Quick-Switch Banner */}
               <div
                 style={{
-                  padding: '2rem',
+                  padding: '1.75rem',
                   borderRadius: '16px',
-                  background: 'linear-gradient(135deg, rgba(15,98,254,0.06), rgba(16,185,129,0.06))',
-                  border: '1px solid rgba(15,98,254,0.2)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: '1.5rem',
+                  gap: '1.25rem',
                   flexWrap: 'wrap'
                 }}
               >
                 <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.35rem' }}>
-                    Ready to initiate a Project SOW?
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                    Need our Data & Privacy Policy?
                   </h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', margin: 0 }}>
-                    Book a discovery consultation and receive an itemized proposal with clear milestones within 24 hours.
+                  <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', margin: 0 }}>
+                    Understand how Cynex Digital safeguards client data, ad accounts, and project assets.
                   </p>
                 </div>
                 <button
-                  onClick={() => onNavigate && onNavigate('contact')}
+                  onClick={() => onNavigate && onNavigate('privacy')}
                   className="btn-prolaps-blue"
-                  style={{ padding: '0.65rem 1.35rem', fontSize: '0.88rem' }}
+                  style={{ padding: '0.65rem 1.25rem', fontSize: '0.88rem' }}
                 >
-                  <span>Start Discovery & Proposal</span>
+                  <span>Privacy Policy</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>

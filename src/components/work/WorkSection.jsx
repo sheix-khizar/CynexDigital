@@ -39,7 +39,7 @@ export default function WorkSection({ _onDiscussProject, isDedicatedPage = false
             </h1>
 
             <p className="page-editorial-sub">
-              From memorable brand identities and modern web solutions to viral social media content, paid ad campaigns, and AI workflows. Explore our client outcomes below.
+              Brand identities, modern web solutions, social engines, and paid campaigns built for measurable client growth.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', marginBottom: '2.5rem' }}>
@@ -61,39 +61,50 @@ export default function WorkSection({ _onDiscussProject, isDedicatedPage = false
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
               Case studies built on <span className="text-gradient">real client outcomes</span>.
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Built on creativity, driven by digital. Every case study represents impactful branding, modern web solutions, viral social reach, and measurable client growth.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.5' }}>
+              Recent work across web, branding, social reach, and paid campaigns.
             </p>
           </div>
         )}
 
-        {/* Filter Buttons */}
-        <div 
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.6rem',
-            justifyContent: isDedicatedPage ? 'flex-start' : 'center',
-            marginBottom: '3rem'
-          }}
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={activeFilter === cat ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}
-              style={{
-                borderRadius: 'var(--radius-full)',
-                fontSize: '0.84rem'
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        {/* Filter Buttons - Dedicated Page Only */}
+        {isDedicatedPage && (
+          <div 
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.6rem',
+              justifyContent: 'flex-start',
+              marginBottom: '3rem'
+            }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={activeFilter === cat ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}
+                style={{
+                  borderRadius: 'var(--radius-full)',
+                  fontSize: '0.84rem'
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Mobile Swipe Hint on Home */}
+        {!isDedicatedPage && (
+          <div className="mobile-carousel-hint">
+            <span>Swipe client case studies</span>
+            <span className="mobile-carousel-hint-arrow">→</span>
+          </div>
+        )}
 
         {/* Projects Grid */}
         <div 
+          className={!isDedicatedPage ? "work-home-grid" : "work-dedicated-grid"}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
@@ -222,8 +233,8 @@ export default function WorkSection({ _onDiscussProject, isDedicatedPage = false
                   {project.title}
                 </h3>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
-                  {project.description}
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5, marginBottom: '1.25rem', flexGrow: 1 }}>
+                  {project.desc}
                 </p>
 
                 {/* KPI Metrics Badges Row */}

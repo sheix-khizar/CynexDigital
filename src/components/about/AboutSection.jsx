@@ -49,15 +49,15 @@ export default function AboutSection({ onContactClick, isDedicatedPage = false, 
           </div>
         ) : (
           /* Home page section header */
-          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 4rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 3.5rem auto' }}>
             <span className="badge badge-brand" style={{ marginBottom: '0.75rem' }}>
               Who We Are
             </span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
               Creative Solutions. <span className="text-gradient">Digital Growth.</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              We craft your digital presence ⚡ Helping businesses build their online footprint, strengthen their brand identity, and achieve sustainable digital growth.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
+              Helping businesses build a distinct online presence, strengthen brand identity, and achieve sustainable growth.
             </p>
           </div>
         )}
@@ -69,18 +69,15 @@ export default function AboutSection({ onContactClick, isDedicatedPage = false, 
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '2.5rem',
             alignItems: 'center',
-            marginBottom: '5rem'
+            marginBottom: '4rem'
           }}
         >
           <div>
             <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '1.25rem', letterSpacing: '-0.02em' }}>
-              We craft your digital presence <br />with <span className="text-gradient">tailored, modern solutions</span>.
+              We craft your digital presence <br />with <span className="text-gradient">tailored, modern solutions.</span>
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.25rem' }}>
-              In today's fast-moving landscape, having a disjointed presence slows your business down. At Cynex Digital, we combine brand identity, modern web solutions, social media management, paid advertising, UI/UX design, and AI automation into a unified growth engine.
-            </p>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '2rem' }}>
-              Based in Rawalpindi, Pakistan, our agency partners with ambitious businesses locally and across the United Arab Emirates, United Kingdom, United States, and worldwide. Our focus is on practical, modern, and tailored solutions that support businesses at every stage of their digital journey.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.65', marginBottom: '2rem' }}>
+              We unite visual identity, modern web engineering, social media engines, and performance advertising into a cohesive growth system. Headquartered in Rawalpindi, Pakistan, our studio partners with ambitious businesses locally, across the UAE, UK, and worldwide.
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

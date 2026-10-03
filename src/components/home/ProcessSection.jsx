@@ -8,7 +8,7 @@ export default function ProcessSection() {
       icon: <Compass size={22} color="var(--cyan-light)" />,
       title: "Discovery & Digital Audit",
       duration: "Stage 1",
-      desc: "We analyze your existing digital footprint, brand positioning, audience psychology, and competitor landscape to identify high-leverage growth opportunities.",
+      desc: "We analyze your digital presence, audience psychology, and competitors to map high-leverage growth opportunities.",
       points: ["Digital Presence Audit", "Audience & Competitor Recon", "Strategic Growth Roadmap"]
     },
     {
@@ -16,15 +16,15 @@ export default function ProcessSection() {
       icon: <Sparkles size={22} color="#3b82f6" />,
       title: "Creative & Brand Architecture",
       duration: "Stage 2",
-      desc: "Our creative team crafts your visual identity, responsive web layouts, social content frameworks, and compelling ad messaging tailored to your audience.",
-      points: ["Brand Identity & Visual Assets", "Modern UI/UX Design", "High-Hook Creative Angles"]
+      desc: "Our creative team designs distinct visual identities, responsive web layouts, and high-converting ad concepts.",
+      points: ["Brand Identity & Visuals", "Modern UI/UX Design", "High-Hook Creative Angles"]
     },
     {
       num: "03",
       icon: <Rocket size={22} color="var(--violet-light)" />,
       title: "Production & Multi-Channel Launch",
       duration: "Stage 3",
-      desc: "We deploy your fast responsive website, publish engaging social media content, configure targeted paid ad campaigns, and integrate automated lead workflows.",
+      desc: "We deploy your fast responsive website, publish organic video content, and launch targeted ad campaigns.",
       points: ["Web Solution Deployment", "Social Content Engine", "Paid Campaign Setup & Tracking"]
     },
     {
@@ -32,8 +32,8 @@ export default function ProcessSection() {
       icon: <TrendingUp size={22} color="#10b981" />,
       title: "Optimization & Digital Scaling",
       duration: "Ongoing",
-      desc: "We monitor performance, refine creative variations, optimize conversion paths, and automate repetitive tasks to deliver sustainable, predictable growth.",
-      points: ["Real-Time ROI Analytics", "Creative & Landing Page CRO", "AI Automation Workflows"]
+      desc: "We monitor performance, refine creative variations, optimize conversion paths, and automate workflows.",
+      points: ["Real-Time ROI Analytics", "Creative & Funnel CRO", "AI Automation Workflows"]
     }
   ];
 
@@ -41,21 +41,21 @@ export default function ProcessSection() {
     <section className="section-spacing" style={{ position: 'relative', background: 'rgba(255,255,255,0.01)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 4rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3.5rem auto' }}>
           <span className="badge badge-brand" style={{ marginBottom: '0.75rem' }}>
             Our Proven Methodology
           </span>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
             Built on creativity, <span className="text-gradient">driven by digital</span>.
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-            A structured 4-stage digital solutions framework engineered to craft your digital presence, connect with your audience, and achieve measurable growth.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
+            Our structured 4-stage framework engineered to take your brand from audit to scalable digital growth.
           </p>
         </div>
 
         {/* Steps Grid */}
         <div 
-          className="reveal-stagger"
+          className="reveal-stagger process-steps-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
@@ -104,7 +104,10 @@ export default function ProcessSection() {
               </div>
 
               {/* Checkpoints */}
-              <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+              <div 
+                className="process-checkpoints-list"
+                style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}
+              >
                 {step.points.map((pt, pIdx) => (
                   <div key={pIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                     <CheckCircle2 size={12} color="var(--cyan-light)" />

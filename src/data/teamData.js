@@ -71,18 +71,18 @@ export const team = [
 export const agencyValues = [
   {
     title: "Built on Creativity, Driven by Digital",
-    desc: "We don't separate creative imagination from commercial execution. Our designs captivate attention while our digital strategies drive tangible business outcomes."
+    desc: "Captivating design paired with digital execution that drives measurable business outcomes."
   },
   {
     title: "Practical & Tailored Solutions",
-    desc: "No cookie-cutter packages or unnecessary complexity. We design pragmatic, modern solutions customized to your specific stage of growth and business goals."
+    desc: "Pragmatic, modern digital solutions tailored to your exact stage of business growth."
   },
   {
-    title: "Everything Under One Unified Roof",
-    desc: "From initial logo design and website launch to daily social media, performance ad campaigns, and AI workflows — all 6 pillars work in harmony."
+    title: "Everything Under One Roof",
+    desc: "Branding, web development, social media, paid ads, and automation working seamlessly together."
   },
   {
-    title: "Transparent Collaboration & Direct Communication",
-    desc: "No confusing agency layers or hidden markups. You get direct access to our specialists, scheduled weekly updates, and clear deliverables from day one."
+    title: "Direct Collaboration",
+    desc: "Direct communication with our specialists, clear deliverables, and zero hidden markups."
   }
 ];

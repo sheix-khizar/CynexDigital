@@ -5,7 +5,7 @@ export const projects = [
     client: "Artisanal Roastery D2C",
     tag: "Web Solutions",
     year: "2025",
-    desc: "Designed and built a mobile-first, high-speed storefront with custom bundle builders and 1-click checkout, lifting conversion rates by 64% in 60 days.",
+    desc: "Mobile-first storefront with custom bundle builders, lifting conversion rates by 64%.",
     challenge: "The client suffered from a slow, outdated website that loaded sluggishly on mobile and had high checkout abandonment.",
     solution: "Rebuilt the front-end with clean semantic code, optimized Core Web Vitals to 99+, and integrated streamlined cart drawers and instant payment gateways.",
     metrics: [
@@ -23,7 +23,7 @@ export const projects = [
     client: "Aura Living Lifestyle",
     tag: "Branding & Design",
     year: "2025",
-    desc: "Created a cohesive brand identity suite from scratch, including logo mark, typography system, packaging, and social media brand guidelines.",
+    desc: "Complete visual identity suite including logo mark, typography system, packaging, and brand guidelines.",
     challenge: "Emerging lifestyle brand needed an elevated, international-standard visual identity to compete with premium overseas brands.",
     solution: "Developed an elegant, modern brand identity system with custom monogramming, primary and secondary logos, brand guidelines, and 30+ reusable social templates.",
     metrics: [
@@ -41,7 +41,7 @@ export const projects = [
     client: "Velo Energy Beverage",
     tag: "Social Media",
     year: "2025",
-    desc: "Engineered a high-velocity organic content strategy across Instagram Reels and TikTok, generating 14.2M views and driving a 340% increase in brand search volume.",
+    desc: "High-velocity Reels and TikTok engine generating 14.2M views and a 340% search volume lift.",
     challenge: "Client struggled to gain organic traction on social media, relying solely on expensive paid ads with poor brand affinity.",
     solution: "Scripted, directed, and produced weekly trending short-form video hooks, customer reaction formats, and vibrant lifestyle visual assets.",
     metrics: [
@@ -59,7 +59,7 @@ export const projects = [
     client: "Lumina Skincare Brand",
     tag: "Paid Ads",
     year: "2025",
-    desc: "Scaled paid advertising across Meta and Google Search from breakeven to a consistent 4.8x ROAS while managing $180k+ in ad spend.",
+    desc: "Targeted Meta and Google ad campaigns scaled from breakeven to a consistent 4.8x ROAS.",
     challenge: "Client's ad account was suffering from ad creative fatigue, high customer acquisition costs, and poor post-iOS pixel tracking.",
     solution: "Rebuilt the campaign structure with broad algorithmic targeting, deployed 15+ weekly creative hook variations, and implemented Meta CAPI server-side tracking.",
     metrics: [
@@ -77,7 +77,7 @@ export const projects = [
     client: "CloudScale Technology",
     tag: "UI/UX Design",
     year: "2026",
-    desc: "Crafted an intuitive, dark-mode design system and responsive web portal interface in Figma, reducing user onboarding friction by 52%.",
+    desc: "Dark-mode design system and responsive portal in Figma, reducing onboarding friction by 52%.",
     challenge: "Complex software product had an outdated, confusing user interface that caused new users to abandon during onboarding.",
     solution: "Conducted user journey mapping, designed wireframes, and built an interactive Figma component library with modern data visualization charts.",
     metrics: [
@@ -95,7 +95,7 @@ export const projects = [
     client: "Nexa Growth Partners",
     tag: "AI Automation",
     year: "2026",
-    desc: "Built a customized AI qualification assistant integrated with WhatsApp, website forms, and CRM, speeding up lead response from 4 hours to 15 seconds.",
+    desc: "Custom AI assistant with WhatsApp and CRM sync, speeding lead response from 4 hours to 15 seconds.",
     challenge: "High inbound inquiry volume went unanswered outside business hours, causing 45% of potential clients to drop off.",
     solution: "Created an intelligent qualification bot using OpenAI API, synchronized instant alerts to WhatsApp, and automated automated meeting calendar booking.",
     metrics: [

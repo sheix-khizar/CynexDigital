@@ -126,7 +126,7 @@ export default function Hero({ onNavigate, onSelectServiceForContact }) {
 
         {/* Subtitle with official brand messaging */}
         <p className="prolaps-hero-desc">
-          We craft your digital presence. From branding and modern web solutions to social media management, paid ads, and AI workflows — we help ambitious businesses stand out and grow.
+          We craft high-performing websites, social media engines, paid campaigns, and distinct brand identities.
         </p>
       </div>
 

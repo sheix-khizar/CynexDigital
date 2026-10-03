@@ -269,20 +269,20 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
             </h1>
 
             <p className="page-editorial-sub">
-              Tell us about your brand goals, target timeline, or what you're looking to build. Our team will review your requirements and respond within one business day with tailored recommendations.
+              Tell us about your project goals. We review every brief and reply within 24 hours.
             </p>
           </div>
         ) : (
           /* Home page section header */
-          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 4rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 3.5rem auto' }}>
             <span className="badge badge-brand" style={{ marginBottom: '0.75rem' }}>
               Start A Conversation
             </span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
               We craft your <span className="text-gradient">digital presence ⚡</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Looking to launch a modern website, scale social media, run targeted paid ads, or refresh your brand? Tell us below — we personally reply within one business day.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
+              Ready to launch or scale your digital presence? Send us a message and we'll reply within 24 hours.
             </p>
           </div>
         )}
@@ -457,12 +457,12 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 {/* Row 4: Tell us about the project */}
                 <div className="form-group" style={{ marginBottom: '1.75rem' }}>
                   <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                    Tell us about the project — what it does, who it is for, what is blocking it
+                    Tell us about your project
                   </label>
                   <textarea
                     name="details"
-                    rows="5"
-                    placeholder="We have a lending platform that takes nine days to approve an application..."
+                    rows="4"
+                    placeholder="Briefly describe your goals, timeline, or requirements..."
                     value={formData.details}
                     onChange={handleChange}
                     className="form-textarea"
@@ -474,7 +474,7 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                       border: '1px solid var(--border-color)',
                       fontSize: '0.92rem',
                       color: 'var(--text-primary)',
-                      minHeight: '130px',
+                      minHeight: '110px',
                       lineHeight: 1.6,
                       resize: 'vertical'
                     }}
@@ -495,9 +495,9 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 >
                   <p 
                     className="contact-guarantee-text"
-                    style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: 0, lineHeight: 1.5, flex: '1 1 220px' }}
+                    style={{ color: 'var(--text-muted)', fontSize: '0.82rem', margin: 0, lineHeight: 1.5, flex: '1 1 200px' }}
                   >
-                    We reply within one business day. Your details stay with us and are never sold or shared.
+                    Reply within 24 hours · Confidential & secure
                   </p>
 
                   <button
@@ -531,11 +531,11 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 marginBottom: '2rem'
               }}
             >
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '1rem' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                 Studio Direct Contact
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-                We believe in genuine, collaborative partnerships. Reach out directly or connect with us across our social channels.
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.55', marginBottom: '1.75rem' }}>
+                Direct communication with our team across email and official channels.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -634,9 +634,9 @@ export default function ContactSection({ prefillData, onToast, isDedicatedPage =
                 alignItems: 'center'
               }}
             >
-              <ShieldCheck size={22} color="var(--cyan-light)" style={{ flexShrink: 0 }} />
+              <ShieldCheck size={20} color="var(--cyan-light)" style={{ flexShrink: 0 }} />
               <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.5' }}>
-                All initial inquiries and concept discussions are strictly protected under mutual confidentiality.
+                All inquiries and project details are protected under mutual confidentiality.
               </p>
             </div>
           </div>

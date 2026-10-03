@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  ShieldCheck, Lock, Eye, FileText, CheckCircle2, ChevronRight, 
-  Mail, ArrowUpRight, Scale, Clock, Globe, KeyRound, AlertCircle
+  Lock, CheckCircle2, ChevronRight, 
+  Mail, ArrowUpRight, Clock, Globe, KeyRound
 } from 'lucide-react';
 
 export default function PrivacyPolicyPage({ onNavigate }) {
-  const [activeSection, setActiveSection] = useState('scope');
 
   const policySections = [
     {
@@ -254,7 +253,7 @@ export default function PrivacyPolicyPage({ onNavigate }) {
       {/* Hero Header */}
       <section className="page-hero-header" style={{ position: 'relative' }}>
         <div className="container">
-          <div style={{ marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '820px', margin: '0 auto 3rem auto', textAlign: 'left' }}>
             <div className="page-breadcrumbs">
               <button onClick={() => onNavigate && onNavigate('home')}>Home</button>
               <ChevronRight size={14} />
@@ -274,192 +273,52 @@ export default function PrivacyPolicyPage({ onNavigate }) {
             </h1>
 
             <p className="page-editorial-sub">
-              How Cynex Digital safeguards client data, ad account credentials, marketing analytics, and confidentiality under rigorous enterprise standards.
+              How Cynex Digital safeguards ad accounts, codebases, and client data under strict enterprise standards.
             </p>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Effective: <strong style={{ color: 'var(--text-primary)' }}>October 1, 2026</strong>
-              </span>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Version: <strong style={{ color: 'var(--text-primary)' }}>2.4 (Enterprise)</strong>
-              </span>
-              <span style={{ background: 'var(--bg-surface-elevated)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
-                Jurisdiction: <strong style={{ color: 'var(--text-primary)' }}>Pakistan & Int. Code</strong>
-              </span>
-            </div>
           </div>
 
-          {/* Trust Guarantees Strip */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))',
-              gap: '1rem',
-              marginBottom: '3.5rem'
-            }}
-          >
-            {[
-              { icon: Lock, title: "Full Client NDA", desc: "Campaign metrics & financials protected under strict confidentiality.", color: "#0f62fe" },
-              { icon: ShieldCheck, title: "Zero Data Brokering", desc: "We never monetize, rent, or distribute client or lead databases.", color: "#10b981" },
-              { icon: KeyRound, title: "Least Privilege Access", desc: "Granular partner permissions with enforced 2FA on all accounts.", color: "#8b5cf6" },
-              { icon: Scale, title: "Compliance Ready", desc: "Aligned with international GDPR & CCPA privacy provisions.", color: "#f59e0b" }
-            ].map((card, idx) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    padding: '1.25rem',
-                    borderRadius: '14px',
-                    background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-color)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem'
-                  }}
-                >
-                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: `${card.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon size={16} color={card.color} />
-                  </div>
-                  <strong style={{ fontSize: '0.92rem', color: 'var(--text-primary)' }}>{card.title}</strong>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>{card.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Main Legal Content with Sticky Quick-Jump Sidebar */}
-          <div className="legal-layout-grid">
-            {/* Sidebar Navigation */}
-            <aside
-              style={{
-                position: 'sticky',
-                top: '110px',
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '16px',
-                padding: '1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.4rem'
-              }}
-            >
-              <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.5rem', paddingLeft: '0.5rem' }}>
-                Table of Contents
-              </div>
+          {/* Simple Readable Content Container */}
+          <div className="legal-reader-container">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {policySections.map((sec) => (
-                <a
-                  key={sec.id}
-                  href={`#${sec.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveSection(sec.id);
-                    const el = document.getElementById(sec.id);
-                    if (el) {
-                      const offset = 100;
-                      const bodyRect = document.body.getBoundingClientRect().top;
-                      const elementRect = el.getBoundingClientRect().top;
-                      const elementPosition = elementRect - bodyRect;
-                      const offsetPosition = elementPosition - offset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                  }}
-                  style={{
-                    padding: '0.55rem 0.75rem',
-                    borderRadius: '8px',
-                    fontSize: '0.84rem',
-                    fontWeight: activeSection === sec.id ? 600 : 500,
-                    color: activeSection === sec.id ? '#0f62fe' : 'var(--text-secondary)',
-                    background: activeSection === sec.id ? 'rgba(15, 98, 254, 0.08)' : 'transparent',
-                    textDecoration: 'none',
-                    display: 'block',
-                    transition: 'all 0.15s ease'
-                  }}
-                >
-                  {sec.title}
-                </a>
-              ))}
-
-              <div style={{ borderTop: '1px solid var(--border-color)', marginTop: '0.75rem', paddingTop: '0.75rem' }}>
-                <button
-                  onClick={() => onNavigate && onNavigate('terms')}
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem 0.75rem',
-                    fontSize: '0.82rem',
-                    color: 'var(--text-primary)',
-                    background: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <span>Terms & Conditions</span>
-                  <ArrowUpRight size={13} />
-                </button>
-              </div>
-            </aside>
-
-            {/* Content Sections */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              {policySections.map((sec) => (
-                <section
+                <article
                   key={sec.id}
                   id={sec.id}
-                  style={{
-                    padding: '2rem',
-                    background: 'var(--bg-surface)',
-                    borderRadius: '16px',
-                    border: '1px solid var(--border-color)'
-                  }}
+                  className="legal-section-block"
                 >
-                  <h2
-                    style={{
-                      fontSize: '1.3rem',
-                      fontWeight: 700,
-                      color: 'var(--text-primary)',
-                      marginBottom: '1.25rem',
-                      fontFamily: 'var(--font-heading)'
-                    }}
-                  >
-                    {sec.title}
-                  </h2>
+                  <h2>{sec.title}</h2>
                   <div>{sec.content}</div>
-                </section>
+                </article>
               ))}
 
-              {/* Bottom Support Banner */}
+              {/* Bottom Quick-Switch Banner */}
               <div
                 style={{
-                  padding: '2rem',
+                  padding: '1.75rem',
                   borderRadius: '16px',
-                  background: 'linear-gradient(135deg, rgba(15,98,254,0.06), rgba(124,58,237,0.06))',
-                  border: '1px solid rgba(15,98,254,0.2)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: '1.5rem',
+                  gap: '1.25rem',
                   flexWrap: 'wrap'
                 }}
               >
                 <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.35rem' }}>
-                    Need a tailored Enterprise NDA?
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                    Looking for our Client Service Agreement?
                   </h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', margin: 0 }}>
-                    We provide bilateral NDAs for venture-backed startups and multinational corporate accounts before discovery audits.
+                  <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', margin: 0 }}>
+                    Read our commercial terms, milestone definitions, and 100% IP transfer framework.
                   </p>
                 </div>
                 <button
-                  onClick={() => onNavigate && onNavigate('contact')}
+                  onClick={() => onNavigate && onNavigate('terms')}
                   className="btn-prolaps-blue"
-                  style={{ padding: '0.65rem 1.35rem', fontSize: '0.88rem' }}
+                  style={{ padding: '0.65rem 1.25rem', fontSize: '0.88rem' }}
                 >
-                  <span>Request NDA & Proposal</span>
+                  <span>Terms & Conditions</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>

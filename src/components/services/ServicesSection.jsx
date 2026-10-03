@@ -98,7 +98,7 @@ export default function ServicesSection({ onSelectServiceForContact, isDedicated
             </h1>
 
             <p className="page-editorial-sub">
-              From memorable branding and modern web solutions to social media management, paid ads, and AI automations — built to help ambitious businesses stand out and grow.
+              From brand identity and modern web development to performance ads and automated workflows.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', marginBottom: '2.5rem' }}>
@@ -172,8 +172,8 @@ export default function ServicesSection({ onSelectServiceForContact, isDedicated
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>
               We craft your <span className="text-gradient">digital presence ⚡</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Practical, modern, and tailored solutions that support businesses at every stage of their digital journey — from brand identity and web solutions to social media, paid ads, and AI workflows.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
+              Full-service digital solutions designed to help ambitious businesses stand out and scale.
             </p>
           </div>
         )}
@@ -306,7 +306,12 @@ export default function ServicesSection({ onSelectServiceForContact, isDedicated
           </div>
         ) : (
           /* Home page 6-Card Grid: Clicking navigates to dedicated page */
-          <div id="services-list" className="services-grid" style={{ marginBottom: '3.5rem' }}>
+          <>
+            <div className="mobile-carousel-hint">
+              <span>Swipe capabilities (6 pillars)</span>
+              <span className="mobile-carousel-hint-arrow">→</span>
+            </div>
+            <div id="services-list" className="services-grid" style={{ marginBottom: '3.5rem' }}>
             {services.map((service, index) => (
               <div 
                 key={service.id}
@@ -368,6 +373,7 @@ export default function ServicesSection({ onSelectServiceForContact, isDedicated
               </div>
             ))}
           </div>
+          </>
         )}
 
         {/* Preview Link when on Home */}
@@ -402,65 +408,33 @@ export default function ServicesSection({ onSelectServiceForContact, isDedicated
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+          <div className="tech-browser-grid">
             {/* Left Tab Buttons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div className="tech-browser-tabs">
               {techCategories.map((cat, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveTechTab(idx)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '0.9rem 1.25rem',
-                    borderRadius: 'var(--radius-md)',
-                    background: activeTechTab === idx ? '#0f62fe' : 'var(--bg-surface-elevated)',
-                    border: activeTechTab === idx ? '1px solid #0f62fe' : '1px solid var(--border-color)',
-                    color: activeTechTab === idx ? '#ffffff' : 'var(--text-primary)',
-                    fontWeight: 700,
-                    fontSize: '0.92rem',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    transition: 'all 0.15s'
-                  }}
+                  className={`tech-browser-tab-btn ${activeTechTab === idx ? 'active' : ''}`}
                 >
                   <span>{cat.name}</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight size={16} className="tech-tab-arrow" />
                 </button>
               ))}
             </div>
 
             {/* Right Tab Content */}
-            <div 
-              style={{
-                background: 'var(--bg-surface-elevated)',
-                padding: '1.75rem',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border-color)'
-              }}
-            >
-              <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.5rem' }}>
+            <div className="tech-browser-content">
+              <h4>
                 {techCategories[activeTechTab].name} Toolkit
               </h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              <p>
                 {techCategories[activeTechTab].desc}
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div className="tech-browser-tags">
                 {techCategories[activeTechTab].tools.map((t, tIdx) => (
-                  <span
-                    key={tIdx}
-                    style={{
-                      fontSize: '0.8rem',
-                      fontWeight: 600,
-                      padding: '0.35rem 0.8rem',
-                      borderRadius: 'var(--radius-full)',
-                      background: 'var(--bg-card)',
-                      border: '1px solid var(--border-color)',
-                      color: 'var(--text-primary)'
-                    }}
-                  >
+                  <span key={tIdx} className="tech-tool-badge">
                     {t}
                   </span>
                 ))}
