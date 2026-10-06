@@ -26,7 +26,9 @@ export default function useSmoothScroll(activePage) {
           node.hasAttribute?.('data-lenis-prevent') ||
           Boolean(node.closest?.('[data-lenis-prevent]')) ||
           Boolean(node.closest?.('.modal-backdrop')) ||
-          Boolean(node.closest?.('.modal-content'))
+          Boolean(node.closest?.('.modal-content')) ||
+          Boolean(node.closest?.('[role="listbox"]')) ||
+          Boolean(node.closest?.('.custom-dropdown-menu'))
         );
       }
     });

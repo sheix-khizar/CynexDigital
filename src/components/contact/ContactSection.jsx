@@ -90,6 +90,10 @@ function CustomDropdown({ label, name, value, options, placeholder, onChange }) 
       {isOpen && (
         <div
           role="listbox"
+          data-lenis-prevent="true"
+          className="custom-dropdown-menu"
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
           style={{
             position: 'absolute',
             top: 'calc(100% + 6px)',
@@ -100,8 +104,11 @@ function CustomDropdown({ label, name, value, options, placeholder, onChange }) 
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
-            maxHeight: '240px',
+            maxHeight: 'min(320px, 60vh)',
             overflowY: 'auto',
+            overscrollBehavior: 'contain',
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
             padding: '0.35rem',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)'
